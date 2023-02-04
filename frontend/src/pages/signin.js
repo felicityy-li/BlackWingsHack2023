@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import icon_logo from "../assets/icon_logo.png";
+import Navbar from "../components/Navbar";
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   return (
@@ -32,9 +33,9 @@ export default function SignIn() {
   // create state variables for each input
 
   return (
-    <Container sx={{ mt: 5 }} maxWidth="sm">
-      
-      <Stack spacing={5}>
+    <Container sx={{ mt: 5, pt: 20}} maxWidth="sm">
+      <Navbar />
+      <Stack spacing={5} justifyContent="center">
         <Stack sx={{ width: "100%" }} direction="column" alignItems="center">
           <img style={{ height: 100, width: 100 }} src={icon_logo} alt="Logo" />
         </Stack>
