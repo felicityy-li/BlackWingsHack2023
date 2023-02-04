@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -15,12 +16,14 @@ export const SignUp = ({ handleClose }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     //TODO: the code here should send the data to the DB
     console.log(firstName, lastName, userType);
-    handleClose();
+    navigate(-1); // TODO: chage this once we have a profile in place
+    // handleClose();
   };
 
   const options = ["Job Seeker", "Job Poster"];

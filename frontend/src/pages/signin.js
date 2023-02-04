@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  Stack,
-  Typography,
-  Container,
-  Button,
-  TextField,
-  Link,
-} from "@mui/material";
+import { Stack, Typography, Container, Button, TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 import icon_logo from "../assets/icon_logo.png";
 const LoginForm = () => {
   return (
@@ -46,7 +40,7 @@ export default function SignIn() {
           </Typography>
           <Stack direction="row" spacing={0.5}>
             <Typography variant="body2">New user?</Typography>
-            <Link variant="subtitle2">Create an account</Link>
+            <Link to="/signup">Create an account</Link>
           </Stack>
           <LoginForm />
         </Stack>

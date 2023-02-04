@@ -5,12 +5,16 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { SignUpContainer } from "./pages/SignUpContainer";
+import { Routes, Route } from "react-router-dom";
+import SignIn from "./pages/signin";
 
 export default function App() {
   return (
-    <Container>
-      <SignUpContainer />
-      <Box></Box>
-    </Container>
+    <>
+      <Routes>
+        <Route path="/" element={<SignIn />} />
+        <Route path="/signup" element={<SignUpContainer />} />
+      </Routes>
+    </>
   );
 }
