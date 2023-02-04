@@ -7,6 +7,7 @@ import Link from "@mui/material/Link";
 import { SignUpContainer } from "./pages/SignUpContainer";
 import { Routes, Route } from "react-router-dom";
 import SignIn from "./pages/SignIn";
+import Jobboard from "./pages/Jobboard";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<SignUpContainer />} />
+          <Route path="/job-board" element={<Jobboard/>}></Route>
         </Routes>
     </>
   );
