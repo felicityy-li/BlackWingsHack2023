@@ -15,7 +15,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<SignUpContainer />} />
-          <Route path="/job-board" element={<Jobboard/>}></Route>
+          <Route path="/jobboard" element={<Jobboard/>}></Route>
         </Routes>
     </>
   );
