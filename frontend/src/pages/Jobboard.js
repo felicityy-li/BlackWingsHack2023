@@ -1,7 +1,7 @@
 import React from 'react'
 import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
-import { Box, Grid, Typography, Container} from "@mui/material";
+import { Box, Typography, Container} from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Jobboard = () => {
@@ -10,7 +10,7 @@ const Jobboard = () => {
         <Typography variant='h2' sx={{fontWeight:'bold'}} mt={15} mb={7}>WELCOME DESE!</Typography>
 
         <Box sx={{ display:'flex', justifyContent: 'space-around', alignItems: 'center'}}>
-            <Box sx={{ display:'flex', flexDirection:'column', justifyContent: 'space-between', alignItems: 'center'}}>
+            <Box sx={{ display:'flex', flexDirection:'column', justifyContent: 'space-between', alignItems: 'center', marginRight: 1}}>
                 <Box sx={{
                         width: 200,
                         height: 200,
@@ -32,7 +32,8 @@ const Jobboard = () => {
                 display:'flex', 
                 flexDirection:'column', 
                 justifyContent: 'space-between', 
-                alignItems: 'center', 
+                alignItems: 'center',
+                marginLeft: 12 
                 }}>
                     <Box sx={{
                         width: 200,
