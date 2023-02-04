@@ -12,7 +12,7 @@ import Jobboard from "./pages/Jobboard";
 export default function App() {
   return (
     <>
-      <Routes>
+        <Routes>
         <Route path="/" element={<SignIn />} />
         <Route path="/signup" element={<SignUpContainer />} />
         <Route path="/jobboard" element={<Jobboard/>}></Route>
