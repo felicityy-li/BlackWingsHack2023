@@ -7,7 +7,12 @@ import {
   Typography,
   Select,
   MenuItem,
+  Link,
+  InputAdornment, IconButton
 } from "@mui/material";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import icon_logo from "../assets/icon_logo.png";
 
 export const SignUp = ({ handleClose }) => {
   // each input has a state variable
@@ -17,7 +22,7 @@ export const SignUp = ({ handleClose }) => {
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("");
   const navigate = useNavigate();
-
+  const [showPassword, setShowPassword] = useState(false)
   const handleSubmit = (e) => {
     e.preventDefault();
     //TODO: the code here should send the data to the DB
@@ -29,71 +34,80 @@ export const SignUp = ({ handleClose }) => {
   const options = ["Job Seeker", "Job Poster"];
 
   return (
-    <>
-      <Typography
-        sx={{ fontWeight: "bold", marginBottom: 2, marginTop: 2 }}
-        variant="h4"
-      >
-        Sign Up
-      </Typography>
-      <form onSubmit={handleSubmit}>
-        <Stack spacing={3}>
-          <Stack spacing={1.5}>
-            <TextField
-              label="First Name"
-              variant="filled"
-              required
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-            <TextField
-              label="Last Name"
-              variant="filled"
-              required
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-            <TextField
-              label="Email"
-              variant="filled"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <TextField
-              label="Password"
-              variant="filled"
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <TextField
-              select
-              label="User Type"
-              defaultValue={options[0]}
-              helperText="Please select your designation"
-              onChange={(e) => setUserType(e.target.value)}
-            >
-              {options.map((option) => (
-                <MenuItem key={option} value={option}>
-                  {option}
-                </MenuItem>
-              ))}
-            </TextField>
-          </Stack>
+    <Stack spacing={5}>
+      <Stack sx={{ width: "100%" }} direction="column" alignItems="center">
+        <img style={{ height: 100, width: 100 }} src={icon_logo} alt="Logo" />
+      </Stack>
+      <Stack spacing={2} sx={{ mb: 5, position: "relative" }}>
+        <Typography sx={{ fontWeight: "bold" }} variant="h4">
+          Create an account
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <Stack spacing={3}>
+            <Stack spacing={1.5}>
+              <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} >
+                <TextField
+                  label="First Name"
+                  fullWidth
+                  variant="outlined"
+                  required
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+                <TextField
+                  label="Last Name"
+                  fullWidth
+                  variant="outlined"
+                  required
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                />
+              </Stack>
 
-          <Stack direction="row" spacing={1}>
-            <Button variant="contained" onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button type="submit" variant="contained" color="primary">
-              Signup
-            </Button>
+              <TextField
+                label="Email"
+                variant="outlined"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <TextField
+                label="Password"
+                variant="outlined"
+                type={showPassword ? "text" : "password"}
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                InputProps={{ endAdornment: (<InputAdornment><IconButton onClick={() => { setShowPassword(!showPassword) }}>{showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}</IconButton></InputAdornment>) }}
+              />
+              <TextField
+                select
+                label="User Type"
+                defaultValue={options[0]}
+                helperText="Please select your designation"
+                onChange={(e) => setUserType(e.target.value)}
+              >
+                {options.map((option) => (
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Stack>
+
+            <Stack direction="row" spacing={1}>
+              <Button size="large" fullWidth type="submit" variant="contained" color="secondary">
+                Sign up
+              </Button>
+            </Stack>
+            <Stack direction="row" spacing={0.5} justifyContent="end">
+              <Typography variant="body2">Already have an account?</Typography>
+              <Link variant="body2" to="/">Sign in</Link>
+            </Stack>
           </Stack>
-        </Stack>
-      </form>
-    </>
+        </form>
+      </Stack>
+    </Stack >
   );
 };
