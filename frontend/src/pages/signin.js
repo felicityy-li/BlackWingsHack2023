@@ -32,7 +32,7 @@ export default function SignIn() {
   // create state variables for each input
 
   return (
-    <Container sx={{ mt: 5, pt: 20}} maxWidth="sm">
+    <Container sx={{ mt: 5, pt: 20}} maxWidth="sm" style={{ background: '#f0ebf7' }} >
       <Stack spacing={5} justifyContent="center">
         <Stack sx={{ width: "100%" }} direction="column" alignItems="center">
           <img style={{ height: 100, width: 100 }} src={icon_logo} alt="Logo" />

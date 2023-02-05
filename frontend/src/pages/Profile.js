@@ -1,11 +1,14 @@
 import React from 'react'
-import { Box, Typography, Button, Grid} from "@mui/material";
+import { Box, Typography, Button, Grid, Stack} from "@mui/material";
 import { Link } from "react-router-dom";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import Navbar from '../components/NavBar';
 
 const Profile = () => {
   return (
-    <Box sx={{ mt: 10 , mx: 10 }}>
+    <Stack>
+        <Navbar isAuth={true} userType={"Job Seeker"} />
+        <Box sx={{ mt: 10 , mx: 10 }}>
         
         <Box sx={{ display: 'flex',
                     flexDirection: 'row',
@@ -79,6 +82,7 @@ const Profile = () => {
         </Box>
         
     </Box>
+    </Stack>
   )
 }
 
