@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const port = process.env.PORT || 8000;
 
+const random = require("./services/UserAuthenticationService");
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
