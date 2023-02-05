@@ -80,8 +80,7 @@ export default function Profile() {
   });
 
   const randomColor = () => {
-    let hex = Math.floor(Math.random() * 0xffffff);
-    let color = "#" + hex.toString(16);
+    let color = "rgb(60,124,169)";
 
     return color;
   };
