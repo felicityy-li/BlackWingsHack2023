@@ -12,7 +12,7 @@ import { useTheme } from '@material-ui/core/styles';
 
 const Navbar = () => {
     const theme = useTheme();
-    const isAuth = false
+    const isAuth = true
     const userType = "Job Poster"
   return (
     <Box sx={{ flexGrow: 1 }}>
