@@ -29,7 +29,7 @@ export const SignUp = ({ handleClose }) => {
     e.preventDefault();
     //TODO: the code here should send the data to the DB
     console.log(firstName, lastName, userType);
-    navigate(-1); // TODO: chage this once we have a profile in place
+    navigate("/profile"); // TODO: chage this once we have a profile in place
     // handleClose();
   };
 

@@ -12,10 +12,18 @@ import { Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import icon_logo from "../assets/icon_logo.png";
+import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //TODO: the code here should send the data to the DB
+    navigate("/profile"); // TODO: chage this once we have a profile in place
+    // handleClose();
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <Stack spacing={3}>
         <Stack spacing={1.5}>
           <TextField name="email" label="Email address" variant="outlined" />
