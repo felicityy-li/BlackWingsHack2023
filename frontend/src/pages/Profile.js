@@ -27,8 +27,17 @@ export default function Profile() {
   const handleClickOpen = () => {
     setOpen(true);
   };
+
+  const randomColor = () => {
+    let hex = Math.floor(Math.random() * 0xffffff);
+    let color = "#" + hex.toString(16);
+
+    return color;
+  };
+
   const handleClose = () => {
     setOpen(false);
+    setColor(randomColor());
     setUserInfo({
       profilePicture:
         "https://st3.depositphotos.com/7486768/17806/v/600/depositphotos_178065822-stock-illustration-profile-anonymous-face-icon-gray.jpg",
@@ -58,6 +67,7 @@ export default function Profile() {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [interests, setInterests] = useState([]);
+  const [color, setColor] = useState("rgb(60,124,169)");
 
   const [userInfo, setUserInfo] = useState({
     profilePicture:
@@ -79,11 +89,6 @@ export default function Profile() {
     ],
   });
 
-  const randomColor = () => {
-    let color = "rgb(60,124,169)";
-
-    return color;
-  };
   return (
     <Container sx={{ mt: 5 }} maxWidth="100vw">
       <Navbar isAuth={true} userType={"Job Seeker"} />
@@ -186,7 +191,7 @@ export default function Profile() {
             {userInfo.interests.map((data) => {
               return (
                 <Chip
-                  style={{ backgroundColor: randomColor(), color: "#ffffff" }}
+                  style={{ backgroundColor: color, color: "#ffffff" }}
                   label={data}
                 />
               );
