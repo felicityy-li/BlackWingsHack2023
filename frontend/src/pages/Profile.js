@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   IconButton,
@@ -29,10 +29,36 @@ export default function Profile() {
   };
   const handleClose = () => {
     setOpen(false);
+    setUserInfo({
+      profilePicture:
+        "https://st3.depositphotos.com/7486768/17806/v/600/depositphotos_178065822-stock-illustration-profile-anonymous-face-icon-gray.jpg",
+      name: { firstName: "Divya", lastName: "Ramaswamy" },
+      location: { city: city, state: state },
+      interests: interests,
+      experience: [
+        "Front Desk at Whiz Code Brooklyn",
+        "Phone Assistant at NC State IT",
+        "Student Ambassador at NC State",
+      ],
+      skills: [
+        "Microsoft Office 365",
+        "Notetaking",
+        "Public Speaking",
+        "Time Management",
+        "Multitasking",
+      ],
+    });
   };
+
   const saveUserInfo = (name) => {
     setOpen(false);
   };
+
+  /** Takes the values from the dialog box to update the user's profile */
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [interests, setInterests] = useState([]);
+
   const [userInfo, setUserInfo] = useState({
     profilePicture:
       "https://st3.depositphotos.com/7486768/17806/v/600/depositphotos_178065822-stock-illustration-profile-anonymous-face-icon-gray.jpg",
@@ -103,6 +129,7 @@ export default function Profile() {
                   type="text"
                   fullWidth
                   variant="outlined"
+                  onChange={(e) => setCity(e.target.value)}
                 />
                 <Typography sx={{ fontWeight: "bold" }}>State</Typography>
                 <TextField
@@ -113,6 +140,7 @@ export default function Profile() {
                   type="text"
                   fullWidth
                   variant="outlined"
+                  onChange={(e) => setState(e.target.value)}
                 />
                 <Typography sx={{ fontWeight: "bold" }}>Interests</Typography>
                 <TextField
@@ -123,6 +151,13 @@ export default function Profile() {
                   type="text"
                   fullWidth
                   variant="outlined"
+                  onChange={(e) => {
+                    const arrOfInterests = e.target.value
+                      .replace(/\s/g, "")
+                      .split(",");
+                    console.log(arrOfInterests);
+                    setInterests(arrOfInterests);
+                  }}
                 />
               </Stack>
             </DialogContent>
