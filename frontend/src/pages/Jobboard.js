@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import NoteAddOutlinedIcon from "@mui/icons-material/NoteAddOutlined";
-import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
-import { Link } from "react-router-dom";
+
 import {
   Typography,
   Container,
@@ -71,7 +69,7 @@ const JobCard = ({ title, city, state, exchange, description }) => {
             <Typography
               sx={{ fontWeight: "bold" }}
               color="primary"
-              variant={"h5"}
+              variant={"h6"}
             >
               {title}
             </Typography>

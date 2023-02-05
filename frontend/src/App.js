@@ -6,11 +6,10 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { SignUpContainer } from "./pages/SignUpContainer";
 import { Routes, Route } from "react-router-dom";
-import SignIn from "./pages/SignIn";
+import SignIn from "./pages/Login";
 import Jobboard from "./pages/Jobboard";
-// import { JobForm } from "./pages/JobForm";
-// import UserProfilePage from "./pages/ProfilePage";
-// import JobFormSuccess from "./pages/JobFormSuccess";
+import UserProfilePage from "./pages/ProfilePage";
+import Profile from "./pages/Profile";
 
 export default function App() {
   return (
@@ -19,9 +18,7 @@ export default function App() {
         <Route path="/" element={<SignIn />} />
         <Route path="/signup" element={<SignUpContainer />} />
         <Route path="/jobboard" element={<Jobboard />}></Route>
-        {/* <Route path="/create-posting" element={<JobForm />} /> */}
-        {/* <Route path="/create-posting-success" element={<JobFormSuccess />} /> */}
-        {/* <Route path="/profile-page" element={<UserProfilePage />}></Route> */}
+        <Route path="/profile-page" element={<Profile />}></Route>
       </Routes>
     </>
   );
