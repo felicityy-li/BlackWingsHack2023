@@ -9,10 +9,11 @@ import {
   MenuItem,
   Link,
   Container,
-  InputAdornment, IconButton
+  InputAdornment,
+  IconButton,
 } from "@mui/material";
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import icon_logo from "../assets/icon_logo.png";
 
 export const SignUp = ({ handleClose }) => {
@@ -23,7 +24,7 @@ export const SignUp = ({ handleClose }) => {
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("");
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
     //TODO: the code here should send the data to the DB
@@ -35,7 +36,7 @@ export const SignUp = ({ handleClose }) => {
   const options = ["Job Seeker", "Job Poster"];
 
   return (
-    <Container sx={{ mt: 5, pt: 15}} maxWidth="sm">
+    <Container sx={{ mt: 5, pt: 15 }} maxWidth="sm">
       <Stack spacing={5}>
         <Stack sx={{ width: "100%" }} direction="column" alignItems="center">
           <img style={{ height: 100, width: 100 }} src={icon_logo} alt="Logo" />
@@ -47,7 +48,7 @@ export const SignUp = ({ handleClose }) => {
           <form onSubmit={handleSubmit}>
             <Stack spacing={3}>
               <Stack spacing={1.5}>
-                <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5} >
+                <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
                   <TextField
                     label="First Name"
                     fullWidth
@@ -81,7 +82,23 @@ export const SignUp = ({ handleClose }) => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  InputProps={{ endAdornment: (<InputAdornment><IconButton onClick={() => { setShowPassword(!showPassword) }}>{showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}</IconButton></InputAdornment>) }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment>
+                        <IconButton
+                          onClick={() => {
+                            setShowPassword(!showPassword);
+                          }}
+                        >
+                          {showPassword ? (
+                            <VisibilityIcon />
+                          ) : (
+                            <VisibilityOffIcon />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
                 <TextField
                   select
@@ -99,19 +116,28 @@ export const SignUp = ({ handleClose }) => {
               </Stack>
 
               <Stack direction="row" spacing={1}>
-                <Button size="large" fullWidth type="submit" variant="contained" color="secondary">
+                <Button
+                  size="large"
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                >
                   Sign up
                 </Button>
               </Stack>
               <Stack direction="row" spacing={0.5} justifyContent="end">
-                <Typography variant="body2">Already have an account?</Typography>
-                <Link variant="body2" to="/">Sign in</Link>
+                <Typography variant="body2">
+                  Already have an account?
+                </Typography>
+                <Link variant="body2" to="/">
+                  Sign in
+                </Link>
               </Stack>
             </Stack>
           </form>
         </Stack>
-      </Stack >
+      </Stack>
     </Container>
-
   );
 };

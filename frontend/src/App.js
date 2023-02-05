@@ -6,18 +6,18 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import { SignUpContainer } from "./pages/SignUpContainer";
 import { Routes, Route } from "react-router-dom";
-import SignIn from "./pages/signin";
+import SignIn from "./pages/Login";
 import Jobboard from "./pages/Jobboard";
-import Profile from "./pages/Profile";
+import UserProfilePage from "./pages/ProfilePage";
 
 export default function App() {
   return (
     <>
-        <Routes>
+      <Routes>
         <Route path="/" element={<SignIn />} />
         <Route path="/signup" element={<SignUpContainer />} />
-        <Route path="/jobboard" element={<Jobboard/>}></Route>
-        <Route path="/profile" element={<Profile/>}></Route>
+        <Route path="/jobboard" element={<Jobboard />}></Route>
+        <Route path="/profile-page" element={<UserProfilePage />}></Route>
       </Routes>
     </>
   );
