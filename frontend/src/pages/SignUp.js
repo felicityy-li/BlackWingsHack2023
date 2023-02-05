@@ -25,15 +25,17 @@ export const SignUp = ({ handleClose }) => {
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("");
   const navigate = useNavigate();
-  const [linkedTo, setLinkedTo] = useState("")
+  const [linkedTo, setLinkedTo] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
     //TODO: the code here should send the data to the DB
     console.log(firstName, lastName, userType);
-    // navigate(-1);
-    if (userType === "Job Seeker") setLinkedTo("/ProfilePage");
-    else setLinkedTo("/create-posting");
+    if (userType === "Job Seeker") {
+      navigate("/profile");
+    } else {
+      navigate("/create-posting");
+    }
     try {
       const result = await axios
         .post("http://localhost:8000/newUser", {
@@ -53,7 +55,8 @@ export const SignUp = ({ handleClose }) => {
     } catch (e) {
       console.error(e.response.data);
     }
-    // handleClose()
+    // TODO: chage this once we have a profile in place
+    // handleClose();
   };
 
   const options = ["Job Seeker", "Job Poster"];
