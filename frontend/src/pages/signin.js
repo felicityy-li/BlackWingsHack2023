@@ -6,8 +6,13 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import icon_logo from "../assets/icon_logo.png";
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const res = fetch('http://localhost:8000/userInfo')
+    //need some work server side before this can be fully implemented.
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <Stack spacing={3}>
         <Stack spacing={1.5}>
           <TextField name="email" label="Email address" variant="outlined" />
