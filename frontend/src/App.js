@@ -20,6 +20,7 @@ export default function App() {
         <Route path="/" element={<SignIn />} />
         <Route path="/signup" element={<SignUpContainer />} />
         <Route path="/jobboard" element={<Jobboard />}></Route>
+        <Route path="/jobform" element={<JobForm />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/create-posting" element={<JobForm />}></Route>
         <Route
