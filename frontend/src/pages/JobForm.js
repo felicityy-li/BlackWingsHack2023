@@ -66,6 +66,7 @@ const Form = () => {
           size="large"
           type="submit"
           variant="contained"
+
         >
           Create Job Posting
         </Button>
@@ -74,7 +75,7 @@ const Form = () => {
     </form>
   )
 }
-export const JobForm = ({ handleClose }) => {
+const JobForm = ({ handleClose }) => {
   // each input has a state variable
 
 
@@ -85,7 +86,7 @@ export const JobForm = ({ handleClose }) => {
       <Container sx={{ mt: 5}} >
         <Navbar isAuth={true} userType={"Job Poster"} />
         <Stack direction="row" sx={{justifyContent: "space-between"}} spacing={5}>
-        <Stack sx={{ pt: 20, width: 'auto'}} spacing={3} justifyContents="center">
+        <Stack sx={{ pt: 12, width: 'auto'}} spacing={3} justifyContents="center">
           <Typography sx={{ fontWeight: "bold" }} variant="h4">
             Add a Job Posting
           </Typography>
@@ -101,3 +102,5 @@ export const JobForm = ({ handleClose }) => {
     </>
   );
 };
+
+export default JobForm
