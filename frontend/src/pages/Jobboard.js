@@ -53,7 +53,7 @@ const JobCard = ({title,city,state,exchange,description}) => {
     <CardContent>
         <Stack spacing={5} >
             <Stack spacing={2}>
-            <Typography sx={{ fontWeight: "bold" }} color="primary" variant={"h6"}>
+            <Typography sx={{ fontWeight: "bold" }} color="primary" variant={"h5"}>
                 {title}
             </Typography>
 
