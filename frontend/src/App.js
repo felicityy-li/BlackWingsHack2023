@@ -10,6 +10,7 @@ import SignIn from "./pages/signin";
 import Jobboard from "./pages/Jobboard";
 import { JobForm } from "./pages/JobForm";
 import Profile from "./pages/Profile";
+import JobFormSuccess from "./pages/JobFormSuccess";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/signup" element={<SignUpContainer />} />
           <Route path="/jobboard" element={<Jobboard/>}></Route>
           <Route path="/create-posting" element={<JobForm />} />
+          <Route path="/create-posting-success" element={<JobFormSuccess />} />
           <Route path="/profile" element={<Profile/>}></Route>
         </Routes>
     </>

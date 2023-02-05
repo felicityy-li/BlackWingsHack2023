@@ -23,7 +23,7 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //TODO: the code here should send the data to the DB
-    navigate(-1); // TODO: chage this once we have a profile in place
+    navigate("/create-posting-success"); // TODO: chage this once we have a profile in place
     // handleClose();
   };
   return (
@@ -32,17 +32,18 @@ const Form = () => {
       <Stack spacing={3}>
         <Stack direction="row" spacing={4} alignItems="center" sx={{ justifyContent: "space-between" }}>
           <Typography bold variant="h6">Job Title</Typography>
-          <TextField style={{ width: 400 }} name="jobTitle" label="Job Title" variant="outlined" />
+          <TextField style={{ width: 400 }} name="jobTitle" label="Job Title" variant="outlined" onChange={(e) => setJobTitle(e.target.value)} />
         </Stack>
         <Stack direction="row" spacing={4} alignItems="center" sx={{ justifyContent: "space-between" }}>
           <Typography bold variant="h6">City</Typography>
-          <TextField style={{ width: 400 }} name="city" label="City" variant="outlined" />
+          <TextField style={{ width: 400 }} name="city" label="City" variant="outlined" onChange={(e) => setCity(e.target.value)}  />
         </Stack>
         <Stack direction="row"  spacing={4} alignItems="center" sx={{ justifyContent: "space-between" }}>
           <Typography bold variant="h6">State</Typography>
           <TextField style={{ width: 400 }} name="state" select
                   defaultValue={options[0]}
-                 label="State" variant="outlined">
+                 label="State" variant="outlined"
+                 onChange={(e) => setState(e.target.value)}>
           {options.map((option) => (
                     <MenuItem key={option} value={option}>
                       {option}
@@ -52,11 +53,11 @@ const Form = () => {
         </Stack>
         <Stack direction="row" spacing={4} alignItems="center" sx={{ justifyContent: "space-between" }}>
           <Typography bold variant="h6">Exchange Currency</Typography>
-          <TextField style={{ width: 500 }} name="exchange" placeholder="e.g. 4 hours/week for unlimited classes" variant="outlined" />
+          <TextField style={{ width: 500 }} name="exchange" placeholder="e.g. 4 hours/week for unlimited classes" variant="outlined" onChange={(e) => setExchange(e.target.value)} />
         </Stack>
         <Stack direction="row" spacing={4} alignItems="center" sx={{ justifyContent: "space-between" }}>
           <Typography bold variant="h6">Job Description</Typography>
-          <TextField multiline rows={8} style={{ width: 435 }} name="description" label="Job Description" variant="outlined" />
+          <TextField multiline rows={8} style={{ width: 435 }} name="description" label="Job Description" variant="outlined" onChange={(e) => setJobDescription(e.target.value)} />
         </Stack>
       </Stack>
       <Button
