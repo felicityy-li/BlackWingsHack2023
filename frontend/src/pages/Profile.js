@@ -88,19 +88,13 @@ export default function Profile() {
         profilePicture:
             "https://st3.depositphotos.com/7486768/17806/v/600/depositphotos_178065822-stock-illustration-profile-anonymous-face-icon-gray.jpg",
         name: { firstName: "Divya", lastName: "Ramaswamy" },
-        location: { city: "Brooklyn", state: "NY" },
-        interests: ["Art", "Gym", "Coding"],
+        location: { city: "", state: "" },
+        interests: [],
         experience: [
-            "Front Desk at Whiz Code Brooklyn",
-            "Phone Assistant at NC State IT",
-            "Student Ambassador at NC State",
+            
         ],
         skills: [
-            "Microsoft Office 365",
-            "Notetaking",
-            "Public Speaking",
-            "Time Management",
-            "Multitasking",
+            
         ],
     });
     /** Takes the values from the dialog box to update the user's profile */
@@ -113,7 +107,7 @@ export default function Profile() {
     
 
     return (
-        <Container sx={{ mt: 5 }} maxWidth="100vw">
+        <Container sx={{ mt: 5, position: "relative",  }} maxWidth="100vw">
             <Navbar isAuth={true} userType={"Job Seeker"} />
             <Stack
                 sx={{ p: 5 }}
@@ -242,9 +236,7 @@ export default function Profile() {
                                 </DialogTitle>
                                 <DialogContent>
                                     <Stack spacing={2} sx={{ width: 400 }}>
-                                        <Typography sx={{ fontWeight: "bold" }}>
-                                            Edit Experiences
-                                        </Typography>
+                                        
                                         <TextField
                                             autoFocus
                                             margin="dense"
@@ -300,13 +292,11 @@ export default function Profile() {
                         <Dialog open={open3}
                             onClose={handleClose3}>
                             <DialogTitle id="alert-dialog-title">
-                                {"Update Experience"}
+                                {"Update Skills"}
                             </DialogTitle>
                             <DialogContent>
                                 <Stack spacing={2} sx={{ width: 400 }}>
-                                    <Typography sx={{ fontWeight: "bold" }}>
-                                        Edit Skills
-                                    </Typography>
+                                    
                                     <TextField
                                         autoFocus
                                         margin="dense"
