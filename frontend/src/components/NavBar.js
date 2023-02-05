@@ -10,10 +10,7 @@ import {
 import brand_logo from "../assets/brand_logo.png";
 import { useTheme } from "@material-ui/core/styles";
 
-const Navbar = () => {
-  const theme = useTheme();
-  const isAuth = false;
-  const userType = "Job Poster";
+const Navbar = (isAuth, userType) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" style={{ background: "#ffffff" }}>
