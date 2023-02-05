@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -8,6 +8,7 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import axios from "axios";
 
 export const SignUp = ({ handleClose }) => {
   // each input has a state variable
@@ -15,15 +16,37 @@ export const SignUp = ({ handleClose }) => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = useState("");
+  const [userType, setUserType] = useState("Job Seeker");
+  const [linkedTo, setLinkedTo] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     //TODO: the code here should send the data to the DB
     console.log(firstName, lastName, userType);
-    navigate(-1); // TODO: chage this once we have a profile in place
-    // handleClose();
+    // navigate(-1);
+    if (userType === "Job Seeker") setLinkedTo("/ProfilePage");
+    else setLinkedTo("/create-posting");
+    try {
+      const result = await axios
+        .post("http://localhost:8000/newUser", {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+          userType: userType,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+      console.log(result.response.data);
+    } catch (e) {
+      console.error(e.response.data);
+    }
+    // handleClose()
   };
 
   const options = ["Job Seeker", "Job Poster"];
@@ -88,8 +111,13 @@ export const SignUp = ({ handleClose }) => {
             <Button variant="contained" onClick={handleClose}>
               Cancel
             </Button>
-            <Button type="submit" variant="contained" color="primary">
-              Signup
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              onClick={handleSubmit}
+            >
+              <Link to={linkedTo}>Signup</Link>
             </Button>
           </Stack>
         </Stack>

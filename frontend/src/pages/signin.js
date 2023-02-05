@@ -1,14 +1,58 @@
-import React from "react";
-import { Stack, Typography, Container, Button, TextField } from "@mui/material";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import {
+  Stack,
+  Typography,
+  Container,
+  Button,
+  TextField,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import icon_logo from "../assets/icon_logo.png";
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //TODO: the code here should send the data to the DB
+    navigate("/profile"); // TODO: chage this once we have a profile in place
+    // handleClose();
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <Stack spacing={3}>
         <Stack spacing={1.5}>
-          <TextField name="email" label="Email address" variant="outlined" />
-          <TextField name="password" label="Password" variant="outlined" />
+          <TextField
+            name="email"
+            label="Email address"
+            variant="outlined"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            name="password"
+            label="Password"
+            variant="outlined"
+            onChange={(e) => setPassword(e.target.value)}
+            type={showPassword ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment>
+                  <IconButton
+                    onClick={() => {
+                      setShowPassword(!showPassword);
+                    }}
+                  >
+                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
         </Stack>
 
         <Button
