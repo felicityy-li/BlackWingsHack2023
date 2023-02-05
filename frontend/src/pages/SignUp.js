@@ -26,10 +26,14 @@ export const SignUp = ({ handleClose }) => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const handleSubmit = (e) => {
-    e.preventDefault();
     //TODO: the code here should send the data to the DB
     console.log(firstName, lastName, userType);
-    navigate("/profile"); // TODO: chage this once we have a profile in place
+    if (userType === "Job Seeker"){
+      navigate("/create-posting"); 
+    } else {
+      navigate("/profile"); 
+    }
+// TODO: chage this once we have a profile in place
     // handleClose();
   };
 

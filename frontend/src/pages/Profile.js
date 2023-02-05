@@ -88,13 +88,13 @@ export default function Profile() {
         profilePicture:
             "https://st3.depositphotos.com/7486768/17806/v/600/depositphotos_178065822-stock-illustration-profile-anonymous-face-icon-gray.jpg",
         name: { firstName: "Divya", lastName: "Ramaswamy" },
-        location: { city: "", state: "" },
-        interests: [],
-        experience: [
+        location: { city: "Brooklyn", state: "NY" },
+        interests: ["Art","Dance","Yoga"],
+        experience: ["Front desk at Code Whiz Brooklyn", "Phone Assistant at NC State IT", "Volunteer at Black Wings Hack 2023"
             
         ],
         skills: [
-            
+            "Time management", "Multitasking", "Public speaking", "Note-taking", "Microsoft Office 365"
         ],
     });
     /** Takes the values from the dialog box to update the user's profile */
