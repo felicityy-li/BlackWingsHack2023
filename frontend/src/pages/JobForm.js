@@ -82,7 +82,7 @@ export const JobForm = ({ handleClose }) => {
 
   return (
     <>
-      <Container sx={{ mt: 5}} style={{ background: '#f0ebf7' }}  >
+      <Container sx={{ mt: 5}} >
         <Navbar isAuth={true} userType={"Job Poster"} />
         <Stack direction="row" sx={{justifyContent: "space-between"}} spacing={5}>
         <Stack sx={{ pt: 20, width: 'auto'}} spacing={3} justifyContents="center">
