@@ -27,9 +27,19 @@ export const SignUp = ({ handleClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     //TODO: the code here should send the data to the DB
-    console.log(firstName, lastName, userType);
+    const userInformation = {firstName, lastName, email, password, userType}
+    const res = fetch('http://localhost:8000/newUser' ,{
+      method: 'POST',
+      headers: {
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify(userInformation)
+    }).catch(error => {
+      console.log(error)
+    })
+    console.log(userInformation)
     navigate('/profile');
-    // handleClose();
+    // successfully sends info to backend but there is an error on the server side
   };
 
   const options = ["Job Seeker", "Job Poster"];
