@@ -23,11 +23,18 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CircleIcon from "@mui/icons-material/Circle";
 import EditIcon from "@mui/icons-material/Edit";
 export default function Profile() {
-  const [open, setOpen] = useState(false);
-  const handleClickOpen = () => {
-    setOpen(true);
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const [open3, setOpen3] = useState(false);
+  const handleClickOpen1 = () => {
+    setOpen1(true);
   };
-
+  const handleClickOpen2 = () => {
+    setOpen2(true);
+  };
+  const handleClickOpen3 = () => {
+    setOpen3(true);
+  };
   const randomColor = () => {
     let hex = Math.floor(Math.random() * 0xffffff);
     let color = "#" + hex.toString(16);
@@ -35,8 +42,8 @@ export default function Profile() {
     return color;
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleClose1 = () => {
+    setOpen1(false);
     setColor(randomColor());
     setUserInfo({
       profilePicture:
@@ -44,53 +51,57 @@ export default function Profile() {
       name: { firstName: "Divya", lastName: "Ramaswamy" },
       location: { city: city, state: state },
       interests: interests,
-      experience: [
-        "Front Desk at Whiz Code Brooklyn",
-        "Phone Assistant at NC State IT",
-        "Student Ambassador at NC State",
-      ],
-      skills: [
-        "Microsoft Office 365",
-        "Notetaking",
-        "Public Speaking",
-        "Time Management",
-        "Multitasking",
-      ],
+      experience: experience,
+      skills: skills,
     });
   };
 
-  const saveUserInfo = (name) => {
-    setOpen(false);
+  const handleClose2 = () => {
+    setOpen2(false);
+    setColor(randomColor());
+    setUserInfo({
+      profilePicture:
+        "https://st3.depositphotos.com/7486768/17806/v/600/depositphotos_178065822-stock-illustration-profile-anonymous-face-icon-gray.jpg",
+      name: { firstName: "Divya", lastName: "Ramaswamy" },
+      location: { city: city, state: state },
+      interests: interests,
+      experience: experience,
+      skills: skills,
+    });
   };
-
-  /** Takes the values from the dialog box to update the user's profile */
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [interests, setInterests] = useState([]);
-  const [color, setColor] = useState("rgb(60,124,169)");
+  const handleClose3 = () => {
+    setOpen3(false);
+    setColor(randomColor());
+    setUserInfo({
+      profilePicture:
+        "https://st3.depositphotos.com/7486768/17806/v/600/depositphotos_178065822-stock-illustration-profile-anonymous-face-icon-gray.jpg",
+      name: { firstName: "Divya", lastName: "Ramaswamy" },
+      location: { city: city, state: state },
+      interests: interests,
+      experience: experience,
+      skills: skills,
+    });
+  };
 
   const [userInfo, setUserInfo] = useState({
     profilePicture:
       "https://st3.depositphotos.com/7486768/17806/v/600/depositphotos_178065822-stock-illustration-profile-anonymous-face-icon-gray.jpg",
     name: { firstName: "Divya", lastName: "Ramaswamy" },
-    location: { city: "Brooklyn", state: "NY" },
-    interests: ["Art", "Gym", "Coding"],
-    experience: [
-      "Front Desk at Whiz Code Brooklyn",
-      "Phone Assistant at NC State IT",
-      "Student Ambassador at NC State",
-    ],
-    skills: [
-      "Microsoft Office 365",
-      "Notetaking",
-      "Public Speaking",
-      "Time Management",
-      "Multitasking",
-    ],
+    location: { city: "", state: "" },
+    interests: [],
+    experience: [],
+    skills: [],
   });
+  /** Takes the values from the dialog box to update the user's profile */
+  const [city, setCity] = useState(userInfo.location.city);
+  const [state, setState] = useState(userInfo.location.state);
+  const [interests, setInterests] = useState(userInfo.interests);
+  const [color, setColor] = useState("rgb(60,124,169)");
+  const [experience, setExperience] = useState(userInfo.experience);
+  const [skills, setSkills] = useState(userInfo.skills);
 
   return (
-    <Container sx={{ mt: 5 }} maxWidth="100vw">
+    <Container sx={{ mt: 5, position: "relative" }} maxWidth="100vw">
       <Navbar isAuth={true} userType={"Job Seeker"} />
       <Stack
         sx={{ p: 5 }}
@@ -109,13 +120,13 @@ export default function Profile() {
         >
           <Stack direction="row" justifyContent="end">
             <Typography color="#ffffff">PLEASE WORK PLEASEEE</Typography>
-            <IconButton sx={{ width: 5 }} onClick={handleClickOpen}>
+            <IconButton sx={{ width: 5 }} onClick={handleClickOpen1}>
               <EditIcon />
             </IconButton>
           </Stack>
           <Dialog
-            open={open}
-            onClose={handleClose}
+            open={open1}
+            onClose={handleClose1}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
@@ -166,8 +177,8 @@ export default function Profile() {
               </Stack>
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleClose}>Cancel</Button>
-              <Button onClick={handleClose} autoFocus>
+              <Button onClick={handleClose1}>Cancel</Button>
+              <Button onClick={handleClose1} autoFocus>
                 Save
               </Button>
             </DialogActions>
@@ -210,17 +221,14 @@ export default function Profile() {
                 Experience
               </Typography>
               <IconButton sx={{ width: 5 }}>
-                <EditIcon onClick={handleClickOpen} />
+                <EditIcon onClick={handleClickOpen2} />
               </IconButton>
-              <Dialog>
+              <Dialog open={open2} onClose={handleClose2}>
                 <DialogTitle id="alert-dialog-title">
                   {"Update Experience"}
                 </DialogTitle>
                 <DialogContent>
                   <Stack spacing={2} sx={{ width: 400 }}>
-                    <Typography sx={{ fontWeight: "bold" }}>
-                      Experience
-                    </Typography>
                     <TextField
                       autoFocus
                       margin="dense"
@@ -231,12 +239,19 @@ export default function Profile() {
                       multiline
                       rows={7}
                       variant="outlined"
+                      onChange={(e) => {
+                        const arrOfInterests = e.target.value
+                          .replace(/\s/g, "")
+                          .split(",");
+                        console.log(arrOfInterests);
+                        setExperience(arrOfInterests);
+                      }}
                     />
                   </Stack>
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <Button onClick={handleClose} autoFocus>
+                  <Button onClick={handleClose2}>Cancel</Button>
+                  <Button onClick={handleClose2} autoFocus>
                     Save
                   </Button>
                 </DialogActions>
@@ -261,10 +276,43 @@ export default function Profile() {
               <Typography sx={{ fontWeight: "bold" }} variant="h4">
                 Skills
               </Typography>
-              <IconButton sx={{ width: 5 }}>
+              <IconButton sx={{ width: 5 }} onClick={handleClickOpen3}>
                 <EditIcon />
               </IconButton>
             </Stack>
+            <Dialog open={open3} onClose={handleClose3}>
+              <DialogTitle id="alert-dialog-title">
+                {"Update Skills"}
+              </DialogTitle>
+              <DialogContent>
+                <Stack spacing={2} sx={{ width: 400 }}>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="experience"
+                    placeholder={userInfo.skills}
+                    type="text"
+                    fullWidth
+                    multiline
+                    rows={7}
+                    variant="outlined"
+                    onChange={(e) => {
+                      const arrOfInterests = e.target.value
+                        .replace(/\s/g, "")
+                        .split(",");
+                      console.log(arrOfInterests);
+                      setSkills(arrOfInterests);
+                    }}
+                  />
+                </Stack>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={handleClose3}>Cancel</Button>
+                <Button onClick={handleClose3} autoFocus>
+                  Save
+                </Button>
+              </DialogActions>
+            </Dialog>
             <Stack direction="row" spacing={0.5} justifyContent="flex-start">
               {userInfo.skills.map((data) => {
                 return <Chip label={data} />;

@@ -15,6 +15,7 @@ import {
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import icon_logo from "../assets/icon_logo.png";
+import axios from "axios";
 
 export const SignUp = ({ handleClose }) => {
   // each input has a state variable
@@ -24,13 +25,35 @@ export const SignUp = ({ handleClose }) => {
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("");
   const navigate = useNavigate();
+  const [linkedTo, setLinkedTo] = useState("")
   const [showPassword, setShowPassword] = useState(false);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     //TODO: the code here should send the data to the DB
     console.log(firstName, lastName, userType);
-    navigate(-1); // TODO: chage this once we have a profile in place
-    // handleClose();
+    // navigate(-1);
+    if (userType === "Job Seeker") setLinkedTo("/ProfilePage");
+    else setLinkedTo("/create-posting");
+    try {
+      const result = await axios
+        .post("http://localhost:8000/newUser", {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+          userType: userType,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+      console.log(result.response.data);
+    } catch (e) {
+      console.error(e.response.data);
+    }
+    // handleClose()
   };
 
   const options = ["Job Seeker", "Job Poster"];
