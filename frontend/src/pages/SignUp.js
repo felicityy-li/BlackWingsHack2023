@@ -35,7 +35,7 @@ export const SignUp = ({ handleClose }) => {
   const options = ["Job Seeker", "Job Poster"];
 
   return (
-    <Container sx={{ mt: 5, pt: 15}} maxWidth="sm">
+    <Container sx={{ mt: 5, pt: 15}} maxWidth="sm" style={{ background: '#f0ebf7' }} >
       <Stack spacing={5}>
         <Stack sx={{ width: "100%" }} direction="column" alignItems="center">
           <img style={{ height: 100, width: 100 }} src={icon_logo} alt="Logo" />
